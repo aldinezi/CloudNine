@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Cloud Nine! - Aldin Neziric</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/gameStyle.css" rel="stylesheet">
+    </head>
+<body>
+    <div class="backdrop active">
+        <div id="startScreen" class="pop-up active">
+            <div class="pop-up-wrap">
+                <h1 class="title">Cloud Nine!</h1>
+                <p class="description"><small>Spark School example project.<br>Cloud jump game by Aldin Nezirić.</small></p>
+                <p>Use Left and Right arrows to control player.</p>
+                <input id="userName" type="text" placeholder="Enter your name" />
+                <p id="userNameEmpty"class="message">Please enter player name!</p>
+                <button id="start" class="button">Start!</button>
+            </div>
+        </div>
+        <div id="resultScreen" class="pop-up">
+            <div class="pop-up-wrap">
+                <h1>High Scores</h1>
+                    <div id='resultHeader'>
+                        <span class='playerName'>Player name:</span>
+                        <span class='playTime'>Time played:</span>
+                        <span class='socreResult'>Score:</span>
+                    </div>
+                <div id="results"></div>
+                <button class="restart button">Restart!</button>
+            </div>
+        </div>
+    </div>
+  
+  <script type="text/javascript" src="assets/jsLib//jquery-1.8.0.js"></script> 
+  <script type="text/javascript" src="assets/jsLib/jquery-ui.min.js"></script> 
+  <script type="text/javascript" src="velocity.js"></script> 
+  <script type="text/javascript" src="game.js"></script>    
+</body>
+</html> 

@@ -1,0 +1,397 @@
+* {
+    margin: 0;
+}
+
+::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #DDDDDD;
+}
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #DDDDDD;
+    opacity: 1;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #DDDDDD;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #DDDDDD;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #DDDDDD;
+}
+
+@font-face {
+    font-family: 'Baloo';
+    src: url('../assets/Baloo-Regular.eot');
+    src: url('../assets/Baloo-Regular.eot?#iefix') format('embedded-opentype'), url('../assets/Baloo-Regular.woff2') format('woff2'), url('../assets/Baloo-Regular.woff') format('woff'), url('../assets/Baloo-Regular.ttf') format('truetype'), url('../assets/Baloo-Regular.svg#Baloo-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Kingthings Bloone!';
+    src: url('../assets/KingthingsBloone.eot');
+    src: url('../assets/KingthingsBloone.eot?#iefix') format('embedded-opentype'), url('../assets/KingthingsBloone.woff') format('woff'), url('../assets/KingthingsBloone.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Baloo';
+    color: #094eb3;
+}
+
+#gameScreen {
+    background: url('../assets/background.svg');
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+#avatar {
+    background: url('../assets/JumpJumpBoy.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    height: 60px;
+    width: 50px;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 2vw);
+    z-index: 10;
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+
+.cloud1,
+.cloud2,
+.cloud3 {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top center;
+    height: 1px;
+    width: 150px;
+}
+
+.cloud1:after,
+.cloud2:after,
+.cloud3:after {
+    height: 45px;
+    display: block;
+    content: '';
+    width: 140px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top center;
+    position: absolute;
+    top: -20px;
+    left: -10px;
+}
+
+.cloud1:after {
+    background-image: url('../assets/cloud1.svg');
+}
+
+.cloud2:after {
+    background-image: url('../assets/cloud2.svg');
+}
+
+.cloud3:after {
+    background-image: url('../assets/cloud3.svg');
+}
+
+.backdrop {
+    position: absolute;
+    z-index: 999;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.backdrop.active {
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.4))), url(../assets/background.svg);
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url(../assets/background.svg);
+    background-position: center center;
+    background-size: cover;
+}
+
+.pop-up {
+    position: absolute;
+    padding: 30px;
+    background-size: cover;
+    min-height: 50vh;
+    min-width: 50vw;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    opacity: 0;
+    border: 30px solid;
+    -o-border-image: url(../assets/popup-back.svg) 95 95 110 90 stretch;
+    border-image: url(../assets/popup-back.svg) 95 95 110 90 stretch;
+    border-width: 40px 40px 40px 40px;
+    background-repeat: no-repeat;
+}
+
+.pop-up-wrap {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: white;
+}
+
+#resultScreen,
+#startScreen {
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+#startScreen.active {
+    opacity: 1;
+    z-index: 999;
+}
+
+#resultScreen.active {
+    opacity: 1;
+    z-index: 999;
+}
+
+#resultBox {
+    height: 45px;
+    width: 70px;
+    background: url(../assets/cloud_counter.svg);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-size: cover;
+    color: #100C5D;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+#timer {
+    height: 45px;
+    width: 70px;
+    background: url(../assets/clock.svg);
+    background-size: contain;
+    background-position: left center;
+    background-repeat: no-repeat;
+    text-align: right;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #F1B934;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+#results {
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 80%;
+    max-height: 35vh;
+    background: #f2f2f2;
+    border-radius: 10px;
+    position: relative;
+}
+
+#results::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(9, 78, 179, 0.45);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+#results::-webkit-scrollbar {
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+#results::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(9, 78, 179, 0.45);
+    background-color: rgb(9, 78, 179);
+}
+
+#userNameEmpty {
+    opacity: 0;
+    color: rgb(182, 133, 19);
+}
+
+#userNameEmpty.active {
+    opacity: 1;
+}
+
+#resultHeader {
+    color: rgb(182, 133, 19);
+    border-bottom: 1px solid;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    width:80%;
+}
+
+#resultHeader span {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    padding: 10px 30px 0px;
+}
+
+#resultList {
+    padding: 10px 30px;
+    position: relative;
+}
+
+#resultList li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+
+/*
+#resultList li:first-child {
+    color: rgb(182, 133, 19);
+    border-bottom: 1px solid;
+    position: absolute;
+    width: calc(100% - 60px);
+    background: #f2f2f2;
+}
+#resultList li:nth-child(2){
+    margin-top: 30px;
+}*/
+
+#resultList li span {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+button.button {
+    margin-top: 3vh;
+    min-width: 17vh;
+    height: 7vh;
+    border: none;
+    border-radius: 5px;
+    background: #094eb3;
+    color: white;
+    font-family: 'Baloo';
+    font-size: 30px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    outline: none;
+}
+
+button.button:hover,
+button.button:focus {
+    -webkit-box-shadow: 0px 0px 10px 5px rgba(195, 195, 195, 0.7);
+    box-shadow: 0px 0px 10px 5px rgba(195, 195, 195, 0.7);
+    background: rgba(9, 78, 220, 1);
+}
+
+span.playTime,
+span.socreResult {
+    text-align: right;
+}
+
+input#userName {
+    margin: 30px;
+    margin-bottom: 10px;
+    border: none;
+    background: rgb(9, 78, 179);
+    color: white;
+    line-height: 6vh;
+    font-family: 'Baloo';
+    font-size: 3vh;
+    text-align: center;
+    border-radius: 5px;
+    -webkit-box-shadow: inset -4px -4px 10px 0px rgba(54, 54, 54, 0.45);
+    box-shadow: inset -4px -4px 10px 0px rgba(54, 54, 54, 0.45);
+    outline: none;
+}
+
+p.description {
+    margin-bottom: 15px;
+    color: #848484;
+    line-height: 16px;
+    font-size: 15px;
+}
+
+.title {
+    font-family: 'Kingthings Bloone!';
+    margin: 30px 0;
+    font-size: 6vh;
+}
