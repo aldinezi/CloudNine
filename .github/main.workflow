@@ -24,4 +24,5 @@ action "Publish" {
   needs = "Tag"
   uses = "actions/npm@master"
   args = "publish"
+  secrets = ["NPM_AUTH_TOKEN"]
 }
