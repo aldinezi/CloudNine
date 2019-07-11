@@ -1,0 +1,22 @@
+{
+  "name": "cloudnine",
+  "version": "1.0.1",
+  "description": "Cloud Nine jumper browser game, final Spark school project from August 2017.",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aldinezi/CloudNine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aldinezi/CloudNine/issues"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/"
+  },
+  "homepage": "https://github.com/aldinezi/CloudNine#readme"
+}
